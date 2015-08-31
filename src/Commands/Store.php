@@ -264,6 +264,10 @@ class Store extends Command
 			if(! array_key_exists($relation, $cachedAttributes)) continue;
 
 			$value = $attributes[$relation];
+
+      // Check if lazyloading proxy has been loaded.
+      if($value instanceof ProxyInterface && ! $value->isLoaded()) continue;
+
 			$cachedValue = $cachedAttributes[$relation];
 
 			if(is_string($cachedValue))
