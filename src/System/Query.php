@@ -338,7 +338,7 @@ class Query {
 	{
 		if ($column instanceof Closure)
 		{
-			$query = $this->newQueryWithoutScopes();
+			$query = $this->mapper->newQueryWithoutScopes();
 
 			call_user_func($column, $query);
 
